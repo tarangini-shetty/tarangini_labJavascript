@@ -29,7 +29,6 @@ Question.prototype.isCorrectAnswer = function(choice){
     return this.answer===choice;
 }
 
-
 var questions = [
   new Question("JavaScript supports", ["Functions", "XHTML","CSS", "HTML"], "Functions"),
   new Question("Which language is used for styling web pages?", ["HTML", "JQuery", "CSS", "XML"], "CSS"),
@@ -54,6 +53,7 @@ function loadQuestions(){
         showProgressBar();
     }
 }
+
 function showScores(){
     let scoreHtml = "<h1>Result</h1>";
     scoreHtml += "<h2 id='score'>Your scores:" + quiz.score + "</h2>"
@@ -78,5 +78,4 @@ function handleOptionButton(id,choice){
 
 
 let quiz = new Quiz(questions);
-
 loadQuestions();

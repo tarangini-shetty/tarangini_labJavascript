@@ -16,7 +16,7 @@ Quiz.prototype.checkOptionWithAnswer= function(answer){
 }
 
 Quiz.prototype.isEnded= function(){
-    this.questionIndex == this.questions.length;
+    return this.questionIndex === this.questions.length;
 }
 
 function Question(text, choices, answer){
@@ -40,7 +40,7 @@ var questions = [
 
 function loadQuestions(){
     if(quiz.isEnded()){
-        //show scores
+        showScores();
     }
     else{
         let question = quiz.getQuestionByIndex();
@@ -51,11 +51,20 @@ function loadQuestions(){
 
         }
         //Show progress bar
+        showProgressBar();
     }
 }
 function showScores(){
     let scoreHtml = "<h1>Result</h1>";
-    scoreHtml += "<h2> id='score'>Your scores:"
+    scoreHtml += "<h2 id='score'>Your scores:" + quiz.score + "</h2>"
+    let quizElement = document.getElementById("quiz");
+    quizElement.innerHTML = scoreHtml;
+}
+
+function showProgressBar(){
+    let currentQuestionNumber = quiz.questionIndex + 1;
+    let progressElement = document.getElementById("progress");
+    progressElement.innerHTML = "Question " + currentQuestionNumber + " of " + quiz.questions.length;
 }
 
 function handleOptionButton(id,choice){
